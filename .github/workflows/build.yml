@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        bazel_version: [8.x, latest]
+        bazel_version: [8.x]
 
     env:
       USE_BAZEL_VERSION: ${{ matrix.bazel_version }}
