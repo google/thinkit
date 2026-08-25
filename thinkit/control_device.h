@@ -60,8 +60,8 @@ class ControlDevice {
   CollectPackets() = 0;
 
   // Runs a command on the control device. Note that this should only be used
-  // on the host device or the sandcastle switches, where gNOI is not supported.
-  // For the devices like GPINs switch, we should use gNOI instead.
+  // on the host device or the legacy switches, where gNOI is not supported.
+  // For the devices like PINS switch, we should use gNOI instead.
   virtual absl::StatusOr<std::string> RunCommand(absl::string_view command,
                                                  absl::Duration timeout) = 0;
 
