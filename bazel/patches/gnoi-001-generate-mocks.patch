@@ -1,0 +1,10 @@
+diff --git a/system/BUILD.bazel b/system/BUILD.bazel
+index e2b4d7b..e19212d 100755
+--- a/system/BUILD.bazel
++++ b/system/BUILD.bazel
+@@ -43,4 +43,5 @@ cc_grpc_library(
+     srcs = [":system_proto"],
+     grpc_only = True,
+     deps = [":system_cc_proto"],
++    generate_mocks = True,
+ )
