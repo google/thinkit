@@ -34,7 +34,7 @@ namespace thinkit {
 
 // HttpResponse represents an HTTP response from an Ixia device.
 struct HttpResponse {
-  int response_code;
+  int response_code = 0;
   std::string response;
 };
 
@@ -68,7 +68,7 @@ enum class RequestType {
 //   assigned to `otg.Port.location` field.
 struct InterfaceInfo {
   absl::flat_hash_set<thinkit::InterfaceMode> interface_modes;
-  int peer_device_index;              // Ignore if not applicable.
+  int peer_device_index = 0;          // Ignore if not applicable.
   std::string peer_interface_name;    // Empty if not applicable.
   std::string peer_mac_address;       // Empty if not applicable.
   std::string peer_ipv4_address;      // Empty if not applicable.

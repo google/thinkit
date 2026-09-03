@@ -59,7 +59,7 @@ class MockControlDevice : public ControlDevice {
   MOCK_METHOD(absl::StatusOr<gnoi::diag::StopBERTResponse>, StopBERT,
               (const gnoi::diag::StopBERTRequest& request), (override));
   MOCK_METHOD(absl::StatusOr<gnoi::diag::GetBERTResultResponse>, GetBERTResult,
-              (const gnoi::diag::GetBERTResultRequest& request));
+              (const gnoi::diag::GetBERTResultRequest& request), (override));
   MOCK_METHOD(absl::StatusOr<absl::flat_hash_set<std::string>>, GetUpLinks,
               (absl::Span<const std::string> sut_ports), (override));
   MOCK_METHOD(absl::Status, CheckUp, (), (override));

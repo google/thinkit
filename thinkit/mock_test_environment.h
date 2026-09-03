@@ -39,6 +39,7 @@ class MockTestEnvironment : public TestEnvironment {
   MOCK_METHOD(void, SetTestCaseIDs, (const std::vector<std::string>&),
               (override));
   MOCK_METHOD(void, RecordMetrics, (const thinkit::MetricGroup&), (override));
+  MOCK_METHOD(void, SaveSwitchLogs, (absl::string_view prefix), (override));
 };
 
 }  // namespace thinkit
