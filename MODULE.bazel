@@ -16,7 +16,7 @@
 
 module(
     name = "thinkit",
-    version = "head",
+    version = "0.1.0",
     bazel_compatibility = [">=7.4.1"],
 )
 
