@@ -18,7 +18,6 @@
 #include <memory>
 #include <string>
 
-#include "absl/memory/memory.h"
 #include "absl/status/status.h"
 #include "absl/strings/string_view.h"
 #include "gtest/gtest.h"
@@ -85,9 +84,12 @@ struct MirrorTestbedFixtureParams {
 //    TEST_P(MyPinsTest, MyTestName) {}
 //
 // For those wanting to pass their own custom parameters, as long as it has a
-// member 'MirrorTestbedInterface* mirror_testbed', it can be passed as the
-// template parameter:
-//    struct MyParams { MirrorTestbedInterface* mirror_testbed; ...};
+// member `mirror_testbed` of type `std::shared_ptr<MirrorTestbedInterface>`
+// (or `MirrorTestbedInterface*`), it can be passed as the template parameter:
+//    struct MyParams {
+//      std::shared_ptr<MirrorTestbedInterface> mirror_testbed;
+//      ...
+//    };
 //    class MyPinsTest :
 //      public thinkit::MirrorTestbedFixtureWithParams<MyParams> {...};
 template <class Params>
@@ -124,9 +126,9 @@ class MirrorTestbedFixtureWithParams : public testing::TestWithParam<Params> {
   }
 
  private:
-  // Takes ownership of the MirrorTestbedInterface parameter.
-  std::unique_ptr<MirrorTestbedInterface> mirror_testbed_interface_ =
-      absl::WrapUnique<MirrorTestbedInterface>(this->GetParam().mirror_testbed);
+  // Takes or shares ownership of the MirrorTestbedInterface parameter.
+  std::shared_ptr<MirrorTestbedInterface> mirror_testbed_interface_ =
+      std::shared_ptr<MirrorTestbedInterface>(this->GetParam().mirror_testbed);
 };
 
 using MirrorTestbedFixture =

@@ -117,7 +117,6 @@ cc_library(
     deps = [
         ":mirror_testbed",
         "@com_github_p4lang_p4runtime//p4/config/v1:p4info_cc_proto",
-        "@com_google_absl//absl/memory",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/strings",
         "@com_google_googletest//:gtest",
@@ -269,7 +268,6 @@ cc_library(
         ":generic_testbed",
         "//thinkit/proto:generic_testbed_cc_proto",
         "@com_github_p4lang_p4runtime//p4/config/v1:p4info_cc_proto",
-        "@com_google_absl//absl/memory",
         "@com_google_absl//absl/status:statusor",
         "@com_google_googletest//:gtest",
     ],
