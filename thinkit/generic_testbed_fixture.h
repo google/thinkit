@@ -18,7 +18,6 @@
 #include <memory>
 #include <string>
 
-#include "absl/memory/memory.h"
 #include "absl/status/statusor.h"
 #include "gtest/gtest.h"
 #include "p4/config/v1/p4info.pb.h"
@@ -82,9 +81,12 @@ struct GenericTestbedFixtureParams {
 //    TEST_P(MyPinsTest, MyTestName) {}
 //
 // For those wanting to pass their own custom parameters, as long as it has a
-// member 'GenericTestbedInterface* testbed_interface', it can be passed as the
-// template parameter:
-//    struct MyParams { GenericTestbedInterface* testbed_interface; ...};
+// member `testbed_interface` of type `std::shared_ptr<GenericTestbedInterface>`
+// (or `GenericTestbedInterface*`), it can be passed as the template parameter:
+//    struct MyParams {
+//      std::shared_ptr<GenericTestbedInterface> testbed_interface;
+//      ...
+//    };
 //    class MyPinsTest : public thinkit::GenericTestbedFixture<MyParams> {...};
 template <class Params = GenericTestbedFixtureParams>
 class GenericTestbedFixture : public testing::TestWithParam<Params> {
@@ -108,9 +110,9 @@ class GenericTestbedFixture : public testing::TestWithParam<Params> {
   }
 
  private:
-  // Takes ownership of the GenericTestbedInterface parameter.
-  std::unique_ptr<GenericTestbedInterface> generic_testbed_interface_ =
-      absl::WrapUnique<GenericTestbedInterface>(
+  // Takes or shares ownership of the GenericTestbedInterface parameter.
+  std::shared_ptr<GenericTestbedInterface> generic_testbed_interface_ =
+      std::shared_ptr<GenericTestbedInterface>(
           this->GetParam().testbed_interface);
 };
 
