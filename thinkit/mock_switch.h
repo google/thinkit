@@ -20,14 +20,14 @@
 #include <string>
 
 #include "absl/status/statusor.h"
-#include "cert/cert.grpc.pb.h"
-#include "diag/diag.grpc.pb.h"
-#include "factory_reset/factory_reset.grpc.pb.h"
+#include "github.com/openconfig/gnmi/proto/gnmi/gnmi.grpc.pb.h"
+#include "github.com/openconfig/gnoi/cert/cert.grpc.pb.h"
+#include "github.com/openconfig/gnoi/diag/diag.grpc.pb.h"
+#include "github.com/openconfig/gnoi/factory_reset/factory_reset.grpc.pb.h"
+#include "github.com/openconfig/gnoi/os/os.grpc.pb.h"
+#include "github.com/openconfig/gnoi/system/system.grpc.pb.h"
 #include "gmock/gmock.h"
-#include "os/os.grpc.pb.h"
 #include "p4/v1/p4runtime.grpc.pb.h"
-#include "proto/gnmi/gnmi.grpc.pb.h"
-#include "system/system.grpc.pb.h"
 #include "thinkit/switch.h"
 
 namespace thinkit {
