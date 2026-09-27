@@ -56,10 +56,10 @@ cc_library(
         "@com_github_gnoi//os:os_cc_grpc_proto",
         "@com_github_gnoi//system:system_cc_grpc_proto",
         "@com_github_grpc_grpc//:grpc++",
-        "@com_github_p4lang_p4runtime//p4/v1:p4runtime_cc_grpc",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/status:statusor",
         "@com_google_absl//absl/strings",
+        "@p4runtime//proto/p4/v1:p4runtime_cc_grpc",
     ],
 )
 
@@ -86,9 +86,9 @@ cc_library(
         "@com_github_gnoi//factory_reset:factory_reset_cc_grpc_proto",
         "@com_github_gnoi//os:os_cc_grpc_proto",
         "@com_github_gnoi//system:system_cc_grpc_proto",
-        "@com_github_p4lang_p4runtime//p4/v1:p4runtime_cc_grpc",
         "@com_google_absl//absl/status:statusor",
         "@com_google_googletest//:gtest",
+        "@p4runtime//proto/p4/v1:p4runtime_cc_grpc",
     ],
 )
 
@@ -116,10 +116,10 @@ cc_library(
     hdrs = ["mirror_testbed_fixture.h"],
     deps = [
         ":mirror_testbed",
-        "@com_github_p4lang_p4runtime//p4/config/v1:p4info_cc_proto",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/strings",
         "@com_google_googletest//:gtest",
+        "@p4runtime//proto/p4/config/v1:p4info_cc_proto",
     ],
 )
 
@@ -267,9 +267,9 @@ cc_library(
     deps = [
         ":generic_testbed",
         "//thinkit/proto:generic_testbed_cc_proto",
-        "@com_github_p4lang_p4runtime//p4/config/v1:p4info_cc_proto",
         "@com_google_absl//absl/status:statusor",
         "@com_google_googletest//:gtest",
+        "@p4runtime//proto/p4/config/v1:p4info_cc_proto",
     ],
 )
 
