@@ -24,8 +24,11 @@
 
 namespace thinkit {
 
-// RemoteFile represents a file path on a remote device. It is meant to be used
-// as a parameter object with designated initializers.
+// `RemotePath` represents a file path on a remote device. It is meant to be
+// used as a parameter object with designated initializers.
+//
+// NOTE: `device` and `file_path` are non-owning views. The caller must ensure
+// the strings they reference remain valid for the lifetime of this struct.
 struct RemotePath {
   absl::string_view device;
   absl::string_view file_path;
@@ -57,7 +60,7 @@ class SSHClient {
                                        const RemotePath& destination,
                                        absl::Duration timeout) = 0;
 
-  // Copies a local directory's files to a remote diretory.
+  // Copies a local directory's files to a remote directory.
   virtual absl::Status PutDirectory(absl::string_view source,
                                     const RemotePath& destination,
                                     absl::Duration timeout) = 0;
